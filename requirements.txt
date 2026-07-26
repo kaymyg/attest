@@ -1,3 +1,21 @@
+# FORWARD-LOOKING. This project is at design stage and has no code yet, so
+# nothing listed here is currently imported by anything. Declared now because
+# the threat model commits to these choices, and revisiting them later should
+# be a deliberate decision rather than drift.
+
+# The attestation payload is a signed summary of AMES ledger state, so this
+# depends on ames rather than reimplementing the ledger or Gate 1.
+# Not published to PyPI; install from source when the code lands:
+#     pip install git+https://github.com/kaymyg/ames.git
+
+# Ed25519 signing. RFC 9421 HTTP Message Signatures -- the Web Bot Auth
+# substrate this extends -- specifies Ed25519, so this is not a free choice.
+cryptography>=42.0.0
+
+# Matches the digest AMES already uses for ledger checkpoints, so an
+# attestation can quote a checkpoint without rehashing under a second
+# algorithm.
 blake3>=0.4.1
+
 pytest>=8.0.0
 hypothesis>=6.100.0
